@@ -12,6 +12,8 @@ services:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - db:/data/db
+    networks:
+      - backend
   topics-manager:
     depends_on:
       - mongodb
@@ -28,6 +30,25 @@ services:
       - DB_PORT=$MONGODB_DOCKER_PORT
     stdin_open: true
     tty: true
+    networks:
+      - frontend
+      - backend
+  bpmn-frontend:
+    depends_on:
+      - topics-manager
+    build:
+      context: ./bpmn-frontend
+      args:
+        - REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+    env_file: ./.env
+    ports:
+      - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+    networks:
+      - frontend  
 
 volumes:
   db:
+
+networks:
+  backend:
+  frontend:
