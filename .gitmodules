@@ -1,0 +1,3 @@
+[submodule "topics-manager"]
+	path = topics-manager
+	url = https://github.com/mattiaizzi/topics-manager.git
