@@ -1,3 +1,6 @@
 [submodule "topics-manager"]
 	path = topics-manager
 	url = https://github.com/mattiaizzi/topics-manager.git
+[submodule "bpmn-frontend"]
+	path = bpmn-frontend
+	url = https://github.com/mattiaizzi/bpmn-frontend.git
